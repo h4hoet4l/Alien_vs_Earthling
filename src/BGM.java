@@ -1,22 +1,37 @@
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.*;
+
 public class BGM {
     public Clip clip;
     public File audioFile;
     public AudioInputStream audioInputStream;
     public boolean isLoop;
-}
 
-public BGM(String pathName, boolean isLoop) {
-    try {
-        clip = AudioSystem.getClip();  // Initialize clip
-        audioFile = new File(pathName);  // Load the audio file
-        audioInputStream = AudioSystem.getAudioInputStream(audioFile);  // Get audio stream
-        clip.open(audioInputStream);  // Open the clip with the audio stream
-    } catch (LineUnavailableException e) {
-        e.printStackTrace();  // Handle exception for unavailable audio line
-    } catch (IOException e) {
-        e.printStackTrace();  // Handle exception for I/O error
-    } catch (UnsupportedAudioFileException e) {
-        e.printStackTrace();  // Handle exception for unsupported audio file type
+    public BGM(String pathName, boolean isLoop) {
+        try {
+            clip = AudioSystem.getClip();
+            audioFile = new File(pathName);
+            audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+            clip.open(audioInputStream);
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void start() {
+        clip.setFramePosition(0);
+        clip.start();
+        if (isLoop) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        }
+    }
+
+    public void stop() {
+        clip.stop();
     }
 }
-
