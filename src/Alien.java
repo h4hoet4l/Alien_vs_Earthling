@@ -18,12 +18,12 @@ public class Alien {
             this.appearance = new ImageIcon("src/images/alien2.png", "Advanced alien image");
             this.width = 400;
             this.height = 400;
-            this.beam = new AlienAttack(); 
+            this.beam = new AlienAttack(x, y, 2); 
         } else {
             this.appearance = new ImageIcon("src/images/alien1.png", "Advanced alien image");
             this.width = 500;
             this.height = 500;
-            this.beam = new AlienAttack();
+            this.beam = new AlienAttack(x, y, 1);
         }
     }
     public void move() {
