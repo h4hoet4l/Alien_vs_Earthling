@@ -15,10 +15,11 @@ public class AlienVSEarthling extends JFrame{
             "Spacey background").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
     ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
              "Game loading").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
-    ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
+    ImageIcon charSelection = new ImageIcon(new ImageIcon("images/character_page.png", 
             "selection screen for earthling with 3 options").getImage().getScaledInstance(600, 
                             600, Image.SCALE_SMOOTH));
     ImageIcon currentScreen;
+    JLabel screenImage = new JLabel();
     public AlienVSEarthling() {
         
         setSize(Main.ScreenWidth, Main.ScreenHeight);
@@ -40,10 +41,8 @@ public class AlienVSEarthling extends JFrame{
         this.currentScreen = screen;
         drawCurrentScreen(getGraphics());
         this.paint(getGraphics());
-         
-        JLabel label = new JLabel(currentScreen);
-        label.setIcon(currentScreen);
-        this.add(label);
+        screenImage.setIcon(currentScreen);
+        this.add(screenImage);
         this.pack();
     }
 
