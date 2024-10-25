@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 import javax.swing.*;
 
-public class Alienattack {
+public class AlienAttack {
     int damage;
     int level;
     ImageIcon appearance;
@@ -10,7 +10,7 @@ public class Alienattack {
     int x;
     int y;
 
-    public Alienattack(int x, int y, int level) {
+    public AlienAttack(int x, int y, int level) {
         this.x = x;
         this.y = y;
         this.damage = level * 2;
@@ -22,7 +22,8 @@ public class Alienattack {
             this.appearance = new ImageIcon("images/alien_attack2.png", "alien beam");
             this.speed = 12;
         } else {
-            this.appearance = new ImageIcon("images/alien_attack3.png", "alien beam");
+            this.appearance = new ImageIcon("images/alien_attack3.png", "alien beam"); 
+            //create 1 more alien_attack image
             this.speed = 14;
         }
     
