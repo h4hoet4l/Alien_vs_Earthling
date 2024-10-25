@@ -26,5 +26,7 @@ public class Alien {
             this.beam = new AlienAttack();
         }
     }
-
+  public void move() {
+        this.x -= 7;
+    }
 }
