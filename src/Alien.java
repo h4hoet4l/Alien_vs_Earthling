@@ -9,6 +9,7 @@ public class Alien {
     public final int width;
     public final int height;
     public int health = 10;
+    public Alienattack beam; 
 
     public Alien(int x, int y, boolean level_2) {
         this.x = x;
@@ -17,10 +18,16 @@ public class Alien {
             this.appearance = new ImageIcon("images/alien2.png", "Advanced alien image");
             this.width = 400;
             this.height = 400;
+            this.beam = new Alienattack(); 
         } else {
             this.appearance = new ImageIcon("images/alien1.png", "Advanced alien image");
             this.width = 500;
             this.height = 500;
+            this.beam = new Alienattack();
         }
     }
+
+}
+{
+
 }
