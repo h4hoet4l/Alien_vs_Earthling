@@ -20,6 +20,7 @@ public class AlienVSEarthling extends JFrame{
                             600, Image.SCALE_SMOOTH));
     ImageIcon currentScreen;
     JLabel screenImage = new JLabel();
+    BGM music = new BGM("src/audio/MainPageBGM.wav", true);
     public AlienVSEarthling() {
         
         setSize(Main.ScreenWidth, Main.ScreenHeight);
@@ -27,6 +28,7 @@ public class AlienVSEarthling extends JFrame{
         setVisible(true);
         setTitle("Aliens vs Earthlings");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        music.start();
         
         
 
