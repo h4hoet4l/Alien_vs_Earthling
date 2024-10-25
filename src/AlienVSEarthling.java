@@ -1,5 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 
 public class AlienVSEarthling extends JFrame{
@@ -9,7 +14,7 @@ public class AlienVSEarthling extends JFrame{
     ImageIcon loadingScreen = new ImageIcon("images/loading_page.png", "Game loading");
     ImageIcon charSelection = new ImageIcon("images/character_page.png", 
                                                 "selection screen for earthling with 3 options");
-    ImageIcon currentScreen;
+    Image currentScreen;
     public AlienVSEarthling() {
         
         setSize(400, 400);
@@ -18,11 +23,16 @@ public class AlienVSEarthling extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void drawCurrentScreen(Graphics g) {
-        g.drawImage(currentScreen, 0, 0);
+        g.drawImage(currentScreen, 0, 0, null);
 
     }
 
     public void changeCurrentScreen(ImageIcon screen) {
-        this.currentScreen = screen;
+        this.currentScreen = screen.getImage();
+    }
+
+    public void startGame(){
+        changeCurrentScreen(homePage);
+
     }
 }
