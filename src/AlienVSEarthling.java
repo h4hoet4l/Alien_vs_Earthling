@@ -9,26 +9,42 @@ import java.util.TimerTask;
 
 public class AlienVSEarthling extends JFrame{
 
-    ImageIcon homePage = new ImageIcon("images/home_page.png", "Game main screen");
-    ImageIcon gameBackground = new ImageIcon("images/game_page.png", "Spacey background");
-    ImageIcon loadingScreen = new ImageIcon("images/loading_page.png", "Game loading");
-    ImageIcon charSelection = new ImageIcon("images/character_page.png", 
-                                                "selection screen for earthling with 3 options");
-    Image currentScreen;
+    ImageIcon homePage = new ImageIcon(new ImageIcon("src/images/home_page.png", 
+                    "Game main screen").getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH));
+    ImageIcon gameBackground = new ImageIcon(new ImageIcon("src/images/game_page.png", 
+            "Spacey background").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
+    ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
+             "Game loading").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
+    ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
+            "selection screen for earthling with 3 options").getImage().getScaledInstance(600, 
+                            600, Image.SCALE_SMOOTH));
+    ImageIcon currentScreen;
     public AlienVSEarthling() {
         
-        setSize(400, 400);
+        setSize(Main.ScreenWidth, Main.ScreenHeight);
+        changeCurrentScreen(homePage);
         setVisible(true);
         setTitle("Aliens vs Earthlings");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+
+
     }
     public void drawCurrentScreen(Graphics g) {
-        g.drawImage(currentScreen, 0, 0, null);
+        
 
     }
 
     public void changeCurrentScreen(ImageIcon screen) {
-        this.currentScreen = screen.getImage();
+        this.currentScreen = screen;
+        drawCurrentScreen(getGraphics());
+        this.paint(getGraphics());
+         
+        JLabel label = new JLabel(currentScreen);
+        label.setIcon(currentScreen);
+        this.add(label);
+        this.pack();
     }
 
     public void startGame(){
