@@ -9,6 +9,7 @@ public class AlienAttack {
     int speed;
     int x;
     int y;
+    int shoot;
 
     public AlienAttack(int x, int y, int level) {
         this.x = x;
