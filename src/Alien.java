@@ -3,7 +3,7 @@ import java.util.Random;
 import javax.swing.*;
 
 public class Alien {
-    ImageIcon appearance;
+    Image appearance;
     public int x;
     public int y;
     public final int width;
@@ -15,12 +15,12 @@ public class Alien {
         this.x = x;
         this.y = y;
         if (level_2) {
-            this.appearance = new ImageIcon("src/images/alien2.png", "Advanced alien image");
+            this.appearance = new ImageIcon("src/images/alien2.png", "Advanced alien image").getImage();
             this.width = 400;
             this.height = 400;
             this.beam = new AlienAttack(x, y, 2); 
         } else {
-            this.appearance = new ImageIcon("src/images/alien1.png", "Advanced alien image");
+            this.appearance = new ImageIcon("src/images/alien1.png", "Advanced alien image").getImage();
             this.width = 500;
             this.height = 500;
             this.beam = new AlienAttack(x, y, 1);
@@ -29,5 +29,14 @@ public class Alien {
     public void move() {
 
         this.x -= 7;
+    }
+
+    public int[] getCoordinates() {
+        int[] coordinates = {x, y};
+        return coordinates;
+    }
+
+    public Image getImage() {
+        return this.appearance;
     }
 }
