@@ -8,7 +8,8 @@ public class Earthling {
     public final int width;
     public final int height;
     public int health = 20;
-    public EarthlingAttack beam; 
+    public EarthlingAttack beam;
+    public int speed; 
 
     public Earthling(int x, int y, int earthling) {
         this.x = x;
@@ -30,4 +31,26 @@ public class Earthling {
 
         
     }
+
+    public int[] getCoordinates() {
+        int[] coordinates = {x, y};
+        return coordinates;
+    }
+
+    public Image getImage() {
+        return this.appearance;
+    }
+
+    public void move(char direction) {
+        if (direction == 'w') {
+            this.y -= speed;
+        } else if (direction == 's') {
+            this.y += speed;
+        } else if (direction == 'a') {
+            this.x -= speed;
+        } else if (direction == 'd') {
+            this.x += speed;
+        }
+    }
+
 }
