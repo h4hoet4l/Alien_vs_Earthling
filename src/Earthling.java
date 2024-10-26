@@ -9,7 +9,7 @@ public class Earthling {
     public final int height;
     public int health = 20;
     public EarthlingAttack beam;
-    public int speed; 
+    public int speed = 5; 
 
     public Earthling(int x, int y, int earthling) {
         this.x = x;
@@ -19,11 +19,11 @@ public class Earthling {
             this.width = 10;
             this.height = 10;
         } else if (earthling == 1) {
-            this.appearance = new ImageIcon("src/images/earthling1.png").getImage();
+            this.appearance = new ImageIcon("src/images/earthling2.png").getImage();
             this.width = 10;
             this.height = 10;
         } else {
-            this.appearance = new ImageIcon("src/images/earthling2.png").getImage();
+            this.appearance = new ImageIcon("src/images/earthling3.png").getImage();
             this.width = 10;
             this.height = 10;
         }

@@ -89,7 +89,18 @@ public class AlienVSEarthling extends JFrame{
     }
 
     void chooseEarthling(int earthling) {
-        this.earthling = new Earthling(0, Main.ScreenHeight / 2, earthling);
+        switch (earthling) {
+            case 1:
+                this.earthling = new Earthling(1, Main.ScreenHeight / 2, earthling);
+                break;
+            case 2:
+                this.earthling = new Earthling(2, Main.ScreenHeight / 2, earthling);
+                break;
+            default:
+                this.earthling = new Earthling(0, Main.ScreenHeight / 2, earthling);
+                break;
+        }
+        
     }
 
     public void drawGame(Graphics g) {
@@ -100,7 +111,6 @@ public class AlienVSEarthling extends JFrame{
     }
     public void updateScreen() {
         drawnEarthling.change(getGraphics());
-        System.out.println("timed");
     }
     
 
@@ -115,7 +125,7 @@ public class AlienVSEarthling extends JFrame{
                     break;
                 case KeyEvent.VK_2:
                     if (currentScreen == charSelection) {
-                    	chooseEarthling(1);
+                        chooseEarthling(1);
                         startGame();
                     }
                     break;
