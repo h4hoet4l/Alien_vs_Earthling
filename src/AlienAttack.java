@@ -33,7 +33,7 @@ public class AlienAttack {
         this.image = appearance.getImage();
     }
     
- // Constructor with two parameters (default level set to 1)
+    // Constructor with two parameters (default level set to 1)
     public AlienAttack(int x, int y) {
         this(x, y, 1); // Calls the main constructor with a default level of 1
     }
