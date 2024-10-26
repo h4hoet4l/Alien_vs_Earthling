@@ -10,13 +10,24 @@ public class Earthling {
     public int health = 20;
     public EarthlingAttack beam; 
 
-    public Earthling(int x, int y, Image appearance) {
+    public Earthling(int x, int y, int earthling) {
         this.x = x;
         this.y = y;
-        this.appearance = appearance;
-        this.width = 10;
-        this.height = 10;
+        if (earthling == 0) {
+            this.appearance = new ImageIcon("src/images/earthling.png").getImage();
+            this.width = 10;
+            this.height = 10;
+        } else if (earthling == 1) {
+            this.appearance = new ImageIcon("src/images/earthling1.png").getImage();
+            this.width = 10;
+            this.height = 10;
+        } else {
+            this.appearance = new ImageIcon("src/images/earthling2.png").getImage();
+            this.width = 10;
+            this.height = 10;
+        }
         this.beam = new EarthlingAttack(x, y); 
+
         
     }
 }
