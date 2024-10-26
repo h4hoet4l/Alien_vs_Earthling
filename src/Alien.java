@@ -29,10 +29,6 @@ public class Alien {
         }
     }
 
-    // New overloaded constructor with default level_2 as false
-    public Alien(int x, int y) {
-        this(x, y, false); // Calls the existing constructor with level_2 as false
-    }
 
     public void move() {
         this.x -= 7;
