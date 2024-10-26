@@ -10,14 +10,15 @@ import java.util.TimerTask;
 public class AlienVSEarthling extends JFrame{
 
     ImageIcon homePage = new ImageIcon(new ImageIcon("src/images/home_page.png", 
-                    "Game main screen").getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH));
+                    "Game main screen").getImage().
+                    getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     ImageIcon gameBackground = new ImageIcon(new ImageIcon("src/images/game_page.png", 
-            "Spacey background").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
+            "Spacey background").getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
-             "Game loading").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
+             "Game loading").getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
-            "selection screen for earthling with 3 options").getImage().getScaledInstance(300, 
-                            300, Image.SCALE_SMOOTH));
+            "selection screen for earthling with 3 options").getImage().
+            getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     ImageIcon currentScreen;
     JLabel screenImage = new JLabel();
     BGM music = new BGM("src/audio/MainPageBGM.wav", true);
