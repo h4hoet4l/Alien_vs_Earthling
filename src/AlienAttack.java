@@ -28,7 +28,8 @@ public class AlienAttack {
         }
     
     }
-    void shoot() {
+
+    public void shoot() {
         this.x -= speed;
     }
 }
