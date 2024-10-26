@@ -15,12 +15,17 @@ public class AlienVSEarthling extends JFrame{
     ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
              "Game loading").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
     ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
-            "selection screen for earthling with 3 options").getImage().getScaledInstance(300, 
-                            300, Image.SCALE_SMOOTH));
+            "selection screen for earthling with 3 options").getImage().getScaledInstance(Main.ScreenWidth, 
+                            Main.ScreenHeight, Image.SCALE_SMOOTH));
     ImageIcon currentScreen;
     JLabel screenImage = new JLabel();
     BGM music = new BGM("src/audio/MainPageBGM.wav", true);
     Earthling earthling;
+    EarthlingPanel drawnEarthling;
+    boolean endGame;
+    Timer timer;
+    
+    
     
     
     public AlienVSEarthling() {
@@ -34,12 +39,20 @@ public class AlienVSEarthling extends JFrame{
         music.start();
         addKeyListener(new KeyListener());
         
+    
+        
 
 
     }
     public void drawCurrentScreen(Graphics g) {
         
 
+    }
+    class Refresher implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            updateScreen();
+            
+        }
     }
 
     public void changeCurrentScreen(ImageIcon screen, boolean gameStart) {
@@ -63,22 +76,31 @@ public class AlienVSEarthling extends JFrame{
         changeCurrentScreen(gameBackground, false);
         changeMusic(new BGM("src/audio/FirstRoundBGM.wav", true));
         drawGame(this.getGraphics());
+        this.timer = new Timer(50, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                updateScreen();
+        
+                if (endGame) {
+                }
+            }    
+        });
+        timer.start();
         
     }
 
     void chooseEarthling(int earthling) {
-    	this.earthling = new Earthling(0, 0, earthling);
+        this.earthling = new Earthling(0, Main.ScreenHeight / 2, earthling);
     }
 
     public void drawGame(Graphics g) {
         this.remove(screenImage);
-        EarthlingPanel drawnEarthling = new EarthlingPanel();
+        this.drawnEarthling = new EarthlingPanel();
         this.add(drawnEarthling);
         
-        //this.pack();
     }
     public void updateScreen() {
-        
+        drawnEarthling.change(getGraphics());
+        System.out.println("timed");
     }
     
 
@@ -129,6 +151,11 @@ public class AlienVSEarthling extends JFrame{
                         earthling.move('a');  
                     }
                     break;
+                case KeyEvent.VK_ESCAPE:
+                    if (currentScreen == gameBackground) {
+                        //timer.stop();  
+                    }
+                    break;
             }
         }
     
@@ -139,20 +166,12 @@ class EarthlingPanel extends JPanel {
     super.paintComponent(g);
     g.drawImage(gameBackground.getImage(), 0, 0, null);
     g.drawImage(earthling.getImage(), earthling.getCoordinates()[0],earthling.getCoordinates()[1], null);
-}
-}
-class TimerTest implements ActionListener {
-    Timer timer = new Timer(1000, this);
-    void run() {
-    timer.start();
     }
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == timer) {
-        updateScreen();
-        System.out.print("b");
-        } else {
-        System.out.print(" . ");
-        }
-        }
+    void change(Graphics g) {
+        g.drawImage(gameBackground.getImage(), 0, 0, null);
+        g.drawImage(earthling.getImage(), earthling.getCoordinates()[0],earthling.getCoordinates()[1], null);
+        revalidate();
     }
+}
+
 }
