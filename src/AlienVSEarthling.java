@@ -21,7 +21,7 @@ public class AlienVSEarthling extends JFrame{
     ImageIcon currentScreen;
     JLabel screenImage = new JLabel();
     BGM music = new BGM("src/audio/MainPageBGM.wav", true);
-    Image earthling;
+    Earthling earthling;
     
     public AlienVSEarthling() {
         
@@ -53,12 +53,12 @@ public class AlienVSEarthling extends JFrame{
     }
 
     public void startGame(){
-        changeCurrentScreen(homePage, true);
+        changeCurrentScreen(gameBackground, false);
 
     }
 
     void chooseEarthling(Image earthling) {
-    	this.earthling = earthling;
+    	this.earthling = new Earthling(0, 0, earthling);
     }
 
 
@@ -69,7 +69,8 @@ public class AlienVSEarthling extends JFrame{
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_1:
                     if(currentScreen == charSelection) {
-                        
+                        chooseEarthling(new ImageIcon("src/images/player.png").getImage());
+                        startGame();
                     }
                     break;
                 case KeyEvent.VK_2:
@@ -79,14 +80,15 @@ public class AlienVSEarthling extends JFrame{
                     break;
                 case KeyEvent.VK_3:
                     if (currentScreen == charSelection) {
-                    
+                    	//this.setEarthling(new ImageIcon("src/images/player2.png"));
+                    	EarthlingAttack.earthlingColor = 3;  
                     }
                     break;
                 case KeyEvent.VK_ENTER:
-                if (currentScreen == homePage) {
-                    changeCurrentScreen(charSelection, false);  
-                }
-                break;
+                    if (currentScreen == homePage) {
+                        changeCurrentScreen(charSelection, false);  
+                    }
+                    break;
                 
             }
         }
