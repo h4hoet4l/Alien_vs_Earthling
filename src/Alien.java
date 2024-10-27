@@ -5,6 +5,12 @@ import javax.swing.*;
 /**
  * Represents an alien in a game. The alien can move and has an appearance,
  * health, and an associated attack beam.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class Alien {
     Image appearance;
