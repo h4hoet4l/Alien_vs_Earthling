@@ -9,6 +9,12 @@ import javax.swing.*;
  * The AlienVSEarthling class represents the main frame for the 
  * "Alien vs Earthling" game. It manages the game states, user 
  * input, and rendering of game components.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class AlienVSEarthling extends JFrame {
     
