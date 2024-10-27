@@ -11,20 +11,24 @@ public class Alien {
     public int health = 10;
     public AlienAttack beam; 
 
-    public Alien(int x, int y, boolean level_2) {
+    public Alien (int x, int y) {
         this.x = x;
         this.y = y;
-        if (level_2) {
+        setAlienImage();
+        width = appearance.getWidth(null);
+        height = appearance.getHeight(null);
+    }
+    private void setAlienImage() {
+        Random random = new Random();
+        int randNum = random.nextInt(100);
+        
+        if ((randNum % 2 == 0) ) {
             this.appearance = new ImageIcon(
                 "src/images/alien2.png", "Advanced alien image").getImage();
-            this.width = 400;
-            this.height = 400;
             this.beam = new AlienAttack(x, y, 2); 
         } else {
              this.appearance = new ImageIcon(
-                "src/images/alien1.png", "Advanced alien image").getImage();
-            this.width = 500;
-            this.height = 500;
+                "src/images/alien.png", "Advanced alien image").getImage();
             this.beam = new AlienAttack(x, y, 1);
         }
     }
