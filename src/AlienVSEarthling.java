@@ -195,7 +195,6 @@ public class AlienVSEarthling extends JFrame {
      *
      * @param g the Graphics context to draw on
      */
-    
     @SuppressWarnings("override")
     public void paint(Graphics g) {
         bufferImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
