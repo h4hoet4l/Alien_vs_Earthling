@@ -17,16 +17,13 @@ public class AlienAttack {
         this.damage = level * 2;
         this.level = level;
         
+    public final void setAlienAttackImage() {
         if (level == 1) {
-            this.appearance = new ImageIcon("images/alien_attack.png", "alien beam");
+            this.appearance = new ImageIcon("src/images/alien_attack2.png", "alien beam");
             this.speed = 10;
-        } else if (level == 2) {
-            this.appearance = new ImageIcon("images/alien_attack2.png", "alien beam");
-            this.speed = 12;
         } else {
-            this.appearance = new ImageIcon("images/alien_attack3.png", "alien beam"); 
-            //create 1 more alien_attack image
-            this.speed = 14;
+            this.appearance = new ImageIcon("src/images/alien_attack.png", "alien beam");
+            this.speed = 12;
         }
     
         // Initialize image field from appearance
