@@ -5,6 +5,12 @@ import javax.sound.sampled.*;
 /**
  * Represents background music (BGM) for the game. This class manages
  * loading, starting, and stopping audio clips.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class BGM {
     public Clip clip;
