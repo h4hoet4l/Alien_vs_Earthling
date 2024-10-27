@@ -132,7 +132,7 @@ public class AlienVSEarthling extends JFrame {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
                                 new ImageIcon("src/images/earthling3.png").getImage());
-                        EarthlingAttack.earthlingColor = 2; 
+                        EarthlingAttack.earthlingColor = 3; 
                         gameStart();
                     }
                 }
