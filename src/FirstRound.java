@@ -2,9 +2,16 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * The FirstRound class represents a game round 
+ * where an Earthling character defends against alien attacks.
+ * It handles the game logic, rendering graphics, 
+ * and user input for controlling the Earthling's movement
+ * and attacks. The class extends Thread to run the game loop in a separate thread.
+ */
 public class FirstRound extends Thread {
+
     // Constants and Variables
-    
     private EarthlingAttack currentEarthlingAttack;
     private Alien currentAlien;
     private AlienAttack currentAlienAttack;
@@ -116,15 +123,19 @@ public class FirstRound extends Thread {
         }
     }
 
-    // Game logic methods
+    /**
+    * Resets the game state to its initial conditions, including resetting 
+    * the health of the Earthling character, clearing existing attacks, 
+    * and starting background music.
+    */
     public void reset() {
         isStageOver = false;
         isGameOver = false;
         frameCount = 0;
         totalScore = 0;
         earthlingPositionX = 10;
-        earthlingPositionY = (Main.ScreenHeight - earthlingHeight) / 2;
-        earthlingHealth = 30;
+        earthlingPositionY = (Main.SCREEN_HEIGHT - earthlingHeight) / 2;
+        earthlingHealth = 35;
 
         backgroundMusic.start();
 
@@ -133,19 +144,25 @@ public class FirstRound extends Thread {
         alienAttacks.clear();
     }
 
+    /**
+    * Processes the player's key input to control the Earthling's movement 
+    * and shooting actions. It updates the Earthling's position based on 
+    * directional movement flags and generates a new Earthling attack 
+    * when the shooting condition is met.
+    */
     private void processKeyInput() {
         if (moveUp && earthlingPositionY - earthlingSpeed > 0) {
             earthlingPositionY -= earthlingSpeed;
         }
         if (moveDown && earthlingPositionY 
-            + earthlingHeight + earthlingSpeed < Main.ScreenHeight) {
+            + earthlingHeight + earthlingSpeed < Main.SCREEN_HEIGHT) {
             earthlingPositionY += earthlingSpeed;
         }
         if (moveLeft && earthlingPositionX - earthlingSpeed > 0) {
             earthlingPositionX -= earthlingSpeed;
         }
         if (moveRight && earthlingPositionX 
-            + earthlingWidth + earthlingSpeed < Main.ScreenWidth) {
+            + earthlingWidth + earthlingSpeed < Main.SCREEN_WIDTH) {
             earthlingPositionX += earthlingSpeed;
         }
         if (isShooting && frameCount % 15 == 0) {
@@ -155,6 +172,12 @@ public class FirstRound extends Thread {
         }
     }
 
+    /**
+    * Handles the logic for processing Earthling attacks. It iterates through 
+    * the list of Earthling attacks and checks for collisions with 
+    * the aliens. If an attack hits an alien, the alien's health is reduced, 
+    * and if the alien's health drops to zero, it is removed from the game.
+    */
     private void processEarthlingAttacks() {
         for (int i = 0; i < earthlingAttacks.size(); i++) {
             currentEarthlingAttack = earthlingAttacks.get(i);
@@ -178,9 +201,14 @@ public class FirstRound extends Thread {
         }
     }
 
+    /**
+    * Spawns new aliens at random vertical positions on the right side of the screen 
+    * at regular intervals defined by the frame count. The aliens are added to 
+    * the aliens list to be rendered and processed in the game.
+    */
     public void spawnAliens() {
-        if (frameCount % 80 == 0) {
-            currentAlien = new Alien(1120, (int) (Math.random() * 621));
+        if (frameCount % 35 == 0) {
+            currentAlien = new Alien(1121, (int) (Math.random() * 622));
             aliens.add(currentAlien);
         }
     }
@@ -192,6 +220,12 @@ public class FirstRound extends Thread {
         }
     }
 
+    /**
+    * Processes alien attacks against the Earthling character. It checks for 
+    * collisions between the alien attacks and the Earthling. If a collision 
+    * occurs, the Earthling's health is reduced accordingly. If the Earthling's 
+    * health drops to zero, the game stage is marked as over.
+    */
     private void processAlienAttacks() {
         if (frameCount % 50 == 0) {
             currentAlienAttack = new AlienAttack(currentAlien.x - 79, currentAlien.y + 35);
@@ -217,13 +251,26 @@ public class FirstRound extends Thread {
         }
     }
 
-    // Drawing methods
+    /**
+    * Draws the current game state onto the provided graphics context. 
+    * This includes drawing the Earthling, any alien characters, and 
+    * the game information such as score and health status.
+    *
+    * @param g The graphics context used for rendering the game elements.
+    */
     public void drawGame(Graphics g) {
         drawEarthling(g);
         drawAliens(g);
         drawGameInfo(g);
     }
 
+    /**
+    * Draws the Earthling character on the provided graphics context. 
+    * It also displays the Earthling's health bar above the character 
+    * and renders any active Earthling attacks.
+    *
+    * @param g The graphics context used for rendering the Earthling and its health.
+    */
     public void drawEarthling(Graphics g) {
         g.drawImage(earthlingImage, earthlingPositionX, earthlingPositionY, null);
         g.setColor(Color.GREEN);
@@ -235,6 +282,12 @@ public class FirstRound extends Thread {
         }
     }
 
+    /**
+    * Draws all active aliens and their respective health bars on the provided 
+    * graphics context. It also renders any active alien attacks.
+    *
+    * @param g The graphics context used for rendering the aliens and their health.
+    */
     public void drawAliens(Graphics g) {
         for (int i = 0; i < aliens.size(); i++) {
             currentAlien = aliens.get(i);
@@ -248,18 +301,28 @@ public class FirstRound extends Thread {
         }
     }
 
+    /**
+    * Draws the game information on the provided graphics context, including 
+    * the player's score, mission objectives, and stage results. This method 
+    * displays messages when the stage is over, indicating success or failure.
+    *
+    * @param g The graphics context used for rendering game information.
+    */
     public void drawGameInfo(Graphics g) {
         g.setColor(Color.RED);
         g.setFont(new Font("Times New Roman", Font.BOLD, 25));
         g.drawString("POINTS : " + totalScore, 20, 70);
         g.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        g.drawString("MISSION : REACH 10000 POINTS", 880, 70);
+        g.drawString("MISSION : REACH 15000 POINTS", 880, 70);
         if (isStageOver && isGameOver) {
             g.setColor(Color.RED);
-            g.setFont(new Font("Times New Roman", Font.BOLD, 80));
-            g.drawString("Press R Key To Restart", 285, 380);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 50));
+            g.drawString("FAIL! THE ALIENS INVADED THE PLANET!", 110, 380);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+            g.drawString("Press R Key To Re-attempt The Game.", 400, 450);
         }
-        if (totalScore == 10000) {
+        if (totalScore == 15000) {
             isNextStage = true;
             isStageOver = true;
             backgroundMusic.stop();
