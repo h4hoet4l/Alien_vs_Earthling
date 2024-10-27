@@ -31,4 +31,8 @@ public class EarthlingAttack {
                 break;
         }
     }
+        
+    public void shoot() {
+        this.x += 15;
+    }
 }

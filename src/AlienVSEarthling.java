@@ -13,7 +13,7 @@ public class AlienVSEarthling extends JFrame{
     ImageIcon gameBackground = new ImageIcon(new ImageIcon("src/images/game_page.png", 
             "Spacey background").getImage().getScaledInstance(Main.ScreenWidth, Main.ScreenHeight, Image.SCALE_SMOOTH));
     ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
-             "Game loading").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH));
+             "Game loading").getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
             "selection screen for earthling with 3 options").getImage().getScaledInstance(Main.ScreenWidth, 
                             Main.ScreenHeight, Image.SCALE_SMOOTH));
