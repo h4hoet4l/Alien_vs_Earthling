@@ -4,6 +4,12 @@ import javax.swing.*;
 /**
  * Represents an Earthling's attack in the game, including attributes such as
  * position, appearance, attack strength, and functionality for moving the attack.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class EarthlingAttack {
     public Image image;
