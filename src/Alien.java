@@ -18,6 +18,7 @@ public class Alien {
         width = appearance.getWidth(null);
         height = appearance.getHeight(null);
     }
+    
     private void setAlienImage() {
         Random random = new Random();
         int randNum = random.nextInt(100);
