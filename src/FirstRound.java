@@ -13,7 +13,7 @@ public class FirstRound extends Thread {
     private final ArrayList<Alien> aliens = new ArrayList<>();
     private final ArrayList<AlienAttack> alienAttacks = new ArrayList<>();
 
-    private final int FrameDelay = 20;
+    private final int frameDelay = 20;
     private long previousTime;
     private int frameCount;
     private int totalScore;
@@ -21,7 +21,7 @@ public class FirstRound extends Thread {
     private BGM backgroundMusic;
     private BGM hitEffectSound;
     
-    private final int EarthlingSpeed = 10;
+    private final int earthlingSpeed = 10;
     private int earthlingHealth = 30;
     private boolean currentStage;
     private boolean moveUp;
@@ -35,8 +35,8 @@ public class FirstRound extends Thread {
     private Image earthlingImage = new ImageIcon("src/images/earthling.png").getImage();
     private int earthlingPositionX;
     private int earthlingPositionY;
-    private final int EarthlingWidth = earthlingImage.getWidth(null);
-    private final int EarthlingHeight = earthlingImage.getHeight(null);
+    private final int earthlingWidth = earthlingImage.getWidth(null);
+    private final int earthlingHeight = earthlingImage.getHeight(null);
 
     // Getters and Setters
     public boolean isNextStage() {
@@ -92,9 +92,9 @@ public class FirstRound extends Thread {
         while (true) {
             while (!isStageOver) {
                 previousTime = System.currentTimeMillis();
-                if (System.currentTimeMillis() - previousTime < FrameDelay) {
+                if (System.currentTimeMillis() - previousTime < frameDelay) {
                     try {
-                        Thread.sleep(FrameDelay - System.currentTimeMillis() + previousTime);
+                        Thread.sleep(frameDelay - System.currentTimeMillis() + previousTime);
                         currentStage = true;
                         processKeyInput();
                         processEarthlingAttacks();
@@ -123,7 +123,7 @@ public class FirstRound extends Thread {
         frameCount = 0;
         totalScore = 0;
         earthlingPositionX = 10;
-        earthlingPositionY = (Main.ScreenHeight - EarthlingHeight) / 2;
+        earthlingPositionY = (Main.ScreenHeight - earthlingHeight) / 2;
         earthlingHealth = 30;
 
         backgroundMusic.start();
@@ -134,19 +134,19 @@ public class FirstRound extends Thread {
     }
 
     private void processKeyInput() {
-        if (moveUp && earthlingPositionY - EarthlingSpeed > 0) {
-            earthlingPositionY -= EarthlingSpeed;
+        if (moveUp && earthlingPositionY - earthlingSpeed > 0) {
+            earthlingPositionY -= earthlingSpeed;
         }
         if (moveDown && earthlingPositionY 
-            + EarthlingHeight + EarthlingSpeed < Main.ScreenHeight) {
-            earthlingPositionY += EarthlingSpeed;
+            + earthlingHeight + earthlingSpeed < Main.ScreenHeight) {
+            earthlingPositionY += earthlingSpeed;
         }
-        if (moveLeft && earthlingPositionX - EarthlingSpeed > 0) {
-            earthlingPositionX -= EarthlingSpeed;
+        if (moveLeft && earthlingPositionX - earthlingSpeed > 0) {
+            earthlingPositionX -= earthlingSpeed;
         }
         if (moveRight && earthlingPositionX 
-            + EarthlingWidth + EarthlingSpeed < Main.ScreenWidth) {
-            earthlingPositionX += EarthlingSpeed;
+            + earthlingWidth + earthlingSpeed < Main.ScreenWidth) {
+            earthlingPositionX += earthlingSpeed;
         }
         if (isShooting && frameCount % 15 == 0) {
             currentEarthlingAttack = new EarthlingAttack (
@@ -203,9 +203,9 @@ public class FirstRound extends Thread {
             currentAlienAttack.shoot();
 
             if (currentAlienAttack.x > earthlingPositionX 
-                && currentAlienAttack.x < earthlingPositionX + EarthlingWidth
+                && currentAlienAttack.x < earthlingPositionX + earthlingWidth
                 && currentAlienAttack.y > earthlingPositionY 
-                && currentAlienAttack.y < earthlingPositionY + EarthlingHeight) {
+                && currentAlienAttack.y < earthlingPositionY + earthlingHeight) {
                 hitEffectSound.start();
                 earthlingHealth -= currentAlienAttack.attack;
                 alienAttacks.remove(currentAlienAttack);
