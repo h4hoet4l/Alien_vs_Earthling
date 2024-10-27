@@ -1,6 +1,7 @@
 # 2D Shooting Game: Alien-vs-Earthling: 
 /**
-* Programming (2IP90) CBL Assignment 
+* Programming (2IP90) CBL Assignment
+* 2D Shooting Game: Alien-vs-Earthling
 * Link to GitHub: https://github.com/Gihak/Alien_vs_Earthling/tree/main
 *
 * @Author: Aldair Pedro
