@@ -151,18 +151,29 @@ public class AlienVSEarthling extends JFrame {
             }
         }
     }
-class EarthlingPanel extends JPanel {
-    @Override
-    public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    g.drawImage(gameBackground.getImage(), 0, 0, null);
-    g.drawImage(earthling.getImage(), earthling.getCoordinates()[0],earthling.getCoordinates()[1], null);
+    
+ // Paint and screenDraw methods
+    public void paint(Graphics g) {
+        bufferImage = createImage(Main.ScreenWidth, Main.ScreenHeight);
+        screenGraphic = bufferImage.getGraphics();
+        screenDraw(screenGraphic);
+        g.drawImage(bufferImage, 0, 0, null);
     }
-    void change(Graphics g) {
-        g.drawImage(gameBackground.getImage(), 0, 0, null);
-        g.drawImage(earthling.getImage(), earthling.getCoordinates()[0],earthling.getCoordinates()[1], null);
-        revalidate();
-    }
-}
 
+    public void screenDraw(Graphics g) {
+        if (isHomePage) {
+            g.drawImage(homePage, 0, 0, null);
+        }
+        if (isCharacterPage) {
+            g.drawImage(characterPage, 0, 0, null);
+        }
+        if (isLoadingPage) {
+            g.drawImage(loadingPage, 0, 0, null);
+        }
+        if (isGamePage) {
+            g.drawImage(gamePage, 0, 0, null);
+            firstRound.drawGame(g);
+        }
+        this.repaint();
+    }
 }
