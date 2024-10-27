@@ -22,12 +22,12 @@ public class Alien {
         Random random = new Random();
         int randNum = random.nextInt(100);
         
-        if ((randNum % 2 == 0) ) {
+        if ((randNum % 2 == 0)) {
             this.appearance = new ImageIcon(
                 "src/images/alien2.png", "Advanced alien image").getImage();
             this.beam = new AlienAttack(x, y, 2); 
         } else {
-             this.appearance = new ImageIcon(
+            this.appearance = new ImageIcon(
                 "src/images/alien.png", "Advanced alien image").getImage();
             this.beam = new AlienAttack(x, y, 1);
         }
