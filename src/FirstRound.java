@@ -8,6 +8,12 @@ import javax.swing.*;
  * It handles the game logic, rendering graphics, 
  * and user input for controlling the Earthling's movement
  * and attacks. The class extends Thread to run the game loop in a separate thread.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class FirstRound extends Thread {
 
