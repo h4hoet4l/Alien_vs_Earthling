@@ -4,6 +4,12 @@ import javax.swing.*;
 /**
  * Represents an alien attack in the game, characterized by its position,
  * level, speed, and appearance.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class AlienAttack {
     int level;
