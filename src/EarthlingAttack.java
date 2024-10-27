@@ -19,19 +19,12 @@ public class EarthlingAttack {
     }
 
     private void setEarthlingAttackImage() {
-        switch (earthlingColor) {
-            case 2:
-                image = new ImageIcon("src/images/earthling_attack2.png").getImage();
-                break;
-            case 3:
-                image = new ImageIcon("src/images/earthling_attack3.png").getImage();
-                break;
-            default:
-                image = new ImageIcon("src/images/earthling_attack.png").getImage();
-                break;
-        }
-    }
-        
+        image = switch (earthlingColor) {
+            case 2 -> new ImageIcon("src/images/earthling_attack2.png").getImage();
+            case 3 -> new ImageIcon("src/images/earthling_attack3.png").getImage();
+            default -> new ImageIcon("src/images/earthling_attack.png").getImage();
+        };
+    }        
     public void shoot() {
         this.x += 15;
     }
