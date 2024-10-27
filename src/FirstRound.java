@@ -313,7 +313,7 @@ public class FirstRound extends Thread {
         g.setFont(new Font("Times New Roman", Font.BOLD, 25));
         g.drawString("POINTS : " + totalScore, 20, 70);
         g.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        g.drawString("MISSION : REACH 15000 POINTS", 880, 70);
+        g.drawString("MISSION : REACH 10000 POINTS", 880, 70);
         if (isStageOver && isGameOver) {
             g.setColor(Color.RED);
             g.setFont(new Font("Times New Roman", Font.BOLD, 50));
@@ -322,7 +322,7 @@ public class FirstRound extends Thread {
             g.setFont(new Font("Times New Roman", Font.BOLD, 30));
             g.drawString("Press R Key To Re-attempt The Game.", 400, 450);
         }
-        if (totalScore == 15000) {
+        if (totalScore == 10000) {
             isNextStage = true;
             isStageOver = true;
             backgroundMusic.stop();
