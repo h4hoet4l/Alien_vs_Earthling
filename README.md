@@ -2,8 +2,12 @@
 /**
 * Programming (2IP90) CBL Assignment 
 * Link to GitHub: https://github.com/Gihak/Alien_vs_Earthling/tree/main
-* Author: Aldair Pedro (1589296), Gihak Kim (2083132)
-* 
+*
+* @Author: Aldair Pedro
+* @ID: 1589296
+*
+* @Author: Gihak Kim
+* @ID: 2083132
 */
 
 # The documentation of the two topics of choice (game design and version control (GitHub/Git) can be found in the folder (Alien_vs_Earthling) and on the GitHub page. 
