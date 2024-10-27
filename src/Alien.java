@@ -31,7 +31,7 @@ public class Alien {
 
 
     public void move() {
-        this.x -= 7;
+        this.x -= 10;
     }
 
     public int[] getCoordinates() {
