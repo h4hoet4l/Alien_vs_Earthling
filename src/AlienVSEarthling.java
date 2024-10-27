@@ -5,6 +5,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.*;
 
+/**
+ * The AlienVSEarthling class represents the main frame for the 
+ * "Alien vs Earthling" game. It manages the game states, user 
+ * input, and rendering of game components.
+ */
 public class AlienVSEarthling extends JFrame {
     
     // Game components
@@ -25,10 +30,15 @@ public class AlienVSEarthling extends JFrame {
     private final Image gamePage = new ImageIcon("src/images/game_page.png").getImage();
     private final Image characterPage = new ImageIcon("src/images/character_page.png").getImage();
 
-    // Constructor
+    /**
+     * Constructs an instance of the AlienVSEarthling game.
+     * Initializes the game window, sets its properties, and
+     * starts background music. The game is set to the home page 
+     * state initially.
+     */
     public AlienVSEarthling() {
         setTitle("Alien vs Earthling");
-        setSize(Main.ScreenWidth, Main.ScreenHeight);
+        setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,8 +83,16 @@ public class AlienVSEarthling extends JFrame {
         loadingTimer.schedule(loadingTask, 5000);
     }
 
-    // KeyListener inner class
     class KeyListener extends KeyAdapter {
+        /**
+        * Handles the key press events for controlling the game.
+        * Depending on the key pressed, it can trigger movements, 
+        * shooting, or transitions between different game states such as 
+        * the character selection screen and game start.
+        *
+        * @param e the KeyEvent containing information about the key press
+        */
+        @SuppressWarnings("override")
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_W -> {
@@ -142,6 +160,14 @@ public class AlienVSEarthling extends JFrame {
             }
         }
 
+        /**
+        * Handles the key release events for controlling the game.
+        * It stops movements or shooting actions when the respective keys 
+        * are released.
+        *
+        * @param e the KeyEvent containing information about the key release
+        */
+        @SuppressWarnings("override")
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_W -> firstRound.setMoveUp(false);
@@ -155,14 +181,31 @@ public class AlienVSEarthling extends JFrame {
         }
     }
     
- // Paint and screenDraw methods
+    /**
+     * Paints the game components on the JFrame.
+     * It creates a buffer image to draw on and then draws that 
+     * image onto the frame. This method is called to refresh 
+     * the screen whenever there are changes to be displayed.
+     *
+     * @param g the Graphics context to draw on
+     */
+    
+    @SuppressWarnings("override")
     public void paint(Graphics g) {
-        bufferImage = createImage(Main.ScreenWidth, Main.ScreenHeight);
+        bufferImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = bufferImage.getGraphics();
         screenDraw(screenGraphic);
         g.drawImage(bufferImage, 0, 0, null);
     }
-
+    
+    /**
+     * Draws the current game screen based on the current state.
+     * It selects which image to render (home page, loading page, 
+     * character selection page, or game page) and also calls the 
+     * firstRound's draw method to render the game components.
+     *
+     * @param g the Graphics context to draw on
+     */
     public void screenDraw(Graphics g) {
         if (isHomePage) {
             g.drawImage(homePage, 0, 0, null);
