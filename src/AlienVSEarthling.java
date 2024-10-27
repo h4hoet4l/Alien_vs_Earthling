@@ -117,93 +117,80 @@ public class AlienVSEarthling extends JFrame{
     class KeyListener extends KeyAdapter {
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
-                case KeyEvent.VK_W:
+                case KeyEvent.VK_W -> {
                     if (firstRound.isCurrentStage()) {
                         firstRound.setMoveUp(true);
                     }
-                    break;
-                case KeyEvent.VK_S:
+                }
+                case KeyEvent.VK_S -> {
                     if (firstRound.isCurrentStage()) {
                         firstRound.setMoveDown(true);
                     }
-                    break;
-                case KeyEvent.VK_A:
+                }
+                case KeyEvent.VK_A -> {
                     if (firstRound.isCurrentStage()) {
                         firstRound.setMoveLeft(true);
                     }
-                    break;
-                case KeyEvent.VK_D:
+                }
+                case KeyEvent.VK_D -> {
                     if (firstRound.isCurrentStage()) {
                         firstRound.setMoveRight(true);
                     }
-                    break;
-                case KeyEvent.VK_R:
+                }
+                case KeyEvent.VK_R -> {
                     if (firstRound.isStageOver() && firstRound.isCurrentStage()) {
                         firstRound.reset();
                     }
-                    break;
-                case KeyEvent.VK_SPACE:
+                }
+                case KeyEvent.VK_SPACE -> {
                     if (firstRound.isCurrentStage()) {
                         firstRound.setShooting(true);
                     }
-                    break;
-                case KeyEvent.VK_ENTER:
+                }
+                case KeyEvent.VK_ENTER -> {
                     if (isHomePage) {
                         chooseCharacter();  // Transition to character selection page
                     }
-                    break;
-                case KeyEvent.VK_1:
+                }
+                case KeyEvent.VK_1 -> {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
-                            new ImageIcon("src/images/earthling.png").getImage());
+                                new ImageIcon("src/images/earthling.png").getImage());
                         gameStart();
                     }
-                    break;
-                case KeyEvent.VK_2:
+                }
+                case KeyEvent.VK_2 -> {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
-                            new ImageIcon("src/images/earthling2.png").getImage());
+                                new ImageIcon("src/images/earthling2.png").getImage());
                         gameStart();
                     }
-                    break;
-                case KeyEvent.VK_3:
+                }
+                case KeyEvent.VK_3 -> {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
-                            new ImageIcon("src/images/earthling3.png").getImage());
+                                new ImageIcon("src/images/earthling3.png").getImage());
                         gameStart();
                     }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    System.exit(0);
-                    break;
-                default:
-                    break;
+                }
+                case KeyEvent.VK_ESCAPE -> System.exit(0);
+                default -> {
+                }
             }
         }
 
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {
-                case KeyEvent.VK_W:
-                    firstRound.setMoveUp(false);
-                    break;
-                case KeyEvent.VK_S:
-                    firstRound.setMoveDown(false);
-                    break;
-                case KeyEvent.VK_A:
-                    firstRound.setMoveLeft(false);
-                    break;
-                case KeyEvent.VK_D:
-                    firstRound.setMoveRight(false);
-                    break;
-                case KeyEvent.VK_SPACE:
-                    firstRound.setShooting(false);
-                    break;
-                default:
-                    break;
+                case KeyEvent.VK_W -> firstRound.setMoveUp(false);
+                case KeyEvent.VK_S -> firstRound.setMoveDown(false);
+                case KeyEvent.VK_A -> firstRound.setMoveLeft(false);
+                case KeyEvent.VK_D -> firstRound.setMoveRight(false);
+                case KeyEvent.VK_SPACE -> firstRound.setShooting(false);
+                default -> {
+                }
             }
         }
     }
-
 class EarthlingPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
