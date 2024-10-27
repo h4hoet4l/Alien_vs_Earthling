@@ -1,4 +1,4 @@
-# 2D Shooting Game: Alien-vs-Earthling: 
+# 2D Shooting Game: Alien vs Earthling: 
 /**
 * Programming (2IP90) CBL Assignment
 * 2D Shooting Game: Alien-vs-Earthling
