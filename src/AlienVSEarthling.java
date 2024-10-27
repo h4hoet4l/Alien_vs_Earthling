@@ -49,71 +49,29 @@ public class AlienVSEarthling extends JFrame {
         addKeyListener(new KeyListener());
     }
 
-    class Refresher implements ActionListener {
-        public void actionPerformed(ActionEvent evt) {
-            updateScreen();
-            
-        }
+    // Choose character screen
+    private void chooseCharacter() {
+        isHomePage = false;
+        isCharacterPage = true;
     }
 
-    public void changeCurrentScreen(ImageIcon screen, boolean gameStart) {
-        this.currentScreen = screen;
-        screenImage.setIcon(currentScreen);
-        if (gameStart) {
-            this.add(screenImage);
-            this.pack();
-        } else {
-            this.repaint();
-        }
-    }
+    // Game start method with loading
+    private void gameStart() {
+        isHomePage = false;
+        isLoadingPage = true;
 
-    public void changeMusic(BGM music) {
-        this.music.stop();
-        this.music = music;
-        music.start();
+        Timer loadingTimer = new Timer();
+        TimerTask loadingTask = new TimerTask() {
+            @Override
+            public void run() {
+                backgroundMusic.stop();
+                isLoadingPage = false;
+                isGamePage = true;
+                firstRound.start();
+            }
+        };
+        loadingTimer.schedule(loadingTask, 5000);
     }
-
-    public void startGame(){
-        changeCurrentScreen(gameBackground, false);
-        changeMusic(new BGM("src/audio/FirstRoundBGM.wav", true));
-        drawGame(this.getGraphics());
-        this.timer = new Timer(50, new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                updateScreen();
-        
-                if (endGame) {
-                }
-            }    
-        });
-        timer.start();
-        
-    }
-
-    void chooseEarthling(int earthling) {
-        switch (earthling) {
-            case 1:
-                this.earthling = new Earthling(1, Main.ScreenHeight / 2, earthling);
-                break;
-            case 2:
-                this.earthling = new Earthling(2, Main.ScreenHeight / 2, earthling);
-                break;
-            default:
-                this.earthling = new Earthling(0, Main.ScreenHeight / 2, earthling);
-                break;
-        }
-        
-    }
-
-    public void drawGame(Graphics g) {
-        this.remove(screenImage);
-        this.drawnEarthling = new EarthlingPanel();
-        this.add(drawnEarthling);
-        
-    }
-    public void updateScreen() {
-        drawnEarthling.change(getGraphics());
-    }
-    
 
     // KeyListener inner class
     class KeyListener extends KeyAdapter {
