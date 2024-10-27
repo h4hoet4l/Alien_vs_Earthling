@@ -116,6 +116,7 @@ public class AlienVSEarthling extends JFrame {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
                                 new ImageIcon("src/images/earthling.png").getImage());
+                        EarthlingAttack.earthlingColor = 1; 
                         gameStart();
                     }
                 }
@@ -123,6 +124,7 @@ public class AlienVSEarthling extends JFrame {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
                                 new ImageIcon("src/images/earthling2.png").getImage());
+                        EarthlingAttack.earthlingColor = 2; 
                         gameStart();
                     }
                 }
@@ -130,6 +132,7 @@ public class AlienVSEarthling extends JFrame {
                     if (isCharacterPage) {
                         firstRound.setEarthlingImage(
                                 new ImageIcon("src/images/earthling3.png").getImage());
+                        EarthlingAttack.earthlingColor = 2; 
                         gameStart();
                     }
                 }
