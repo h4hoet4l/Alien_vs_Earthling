@@ -113,62 +113,97 @@ public class AlienVSEarthling extends JFrame{
     }
     
 
+    // KeyListener inner class
     class KeyListener extends KeyAdapter {
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
-                case KeyEvent.VK_1:
-                    if (currentScreen == charSelection) {
-                        chooseEarthling(0);
-                        startGame();
-                    }
-                    break;
-                case KeyEvent.VK_2:
-                    if (currentScreen == charSelection) {
-                        chooseEarthling(1);
-                        startGame();
-                    }
-                    break;
-                case KeyEvent.VK_3:
-                    if (currentScreen == charSelection) {
-                        chooseEarthling(2);
-                        startGame();
-                        EarthlingAttack.earthlingColor = 3;
-                    }
-                    break;
-                case KeyEvent.VK_ENTER:
-                    if (currentScreen == homePage) {
-                        changeCurrentScreen(charSelection, false);  
-                    }
-                    break;
                 case KeyEvent.VK_W:
-                    if (currentScreen == gameBackground) {
-                        earthling.move('w');  
-                    }
-                    break;
-                case KeyEvent.VK_D:
-                    if (currentScreen == gameBackground) {
-                        earthling.move('d');  
+                    if (firstRound.isCurrentStage()) {
+                        firstRound.setMoveUp(true);
                     }
                     break;
                 case KeyEvent.VK_S:
-                    if (currentScreen == gameBackground) {
-                        earthling.move('s');  
+                    if (firstRound.isCurrentStage()) {
+                        firstRound.setMoveDown(true);
                     }
                     break;
                 case KeyEvent.VK_A:
-                    if (currentScreen == gameBackground) {
-                        earthling.move('a');  
+                    if (firstRound.isCurrentStage()) {
+                        firstRound.setMoveLeft(true);
+                    }
+                    break;
+                case KeyEvent.VK_D:
+                    if (firstRound.isCurrentStage()) {
+                        firstRound.setMoveRight(true);
+                    }
+                    break;
+                case KeyEvent.VK_R:
+                    if (firstRound.isStageOver() && firstRound.isCurrentStage()) {
+                        firstRound.reset();
+                    }
+                    break;
+                case KeyEvent.VK_SPACE:
+                    if (firstRound.isCurrentStage()) {
+                        firstRound.setShooting(true);
+                    }
+                    break;
+                case KeyEvent.VK_ENTER:
+                    if (isHomePage) {
+                        chooseCharacter();  // Transition to character selection page
+                    }
+                    break;
+                case KeyEvent.VK_1:
+                    if (isCharacterPage) {
+                        firstRound.setEarthlingImage(
+                            new ImageIcon("src/images/earthling.png").getImage());
+                        gameStart();
+                    }
+                    break;
+                case KeyEvent.VK_2:
+                    if (isCharacterPage) {
+                        firstRound.setEarthlingImage(
+                            new ImageIcon("src/images/earthling2.png").getImage());
+                        gameStart();
+                    }
+                    break;
+                case KeyEvent.VK_3:
+                    if (isCharacterPage) {
+                        firstRound.setEarthlingImage(
+                            new ImageIcon("src/images/earthling3.png").getImage());
+                        gameStart();
                     }
                     break;
                 case KeyEvent.VK_ESCAPE:
-                    if (currentScreen == gameBackground) {
-                        //timer.stop();  
-                    }
+                    System.exit(0);
+                    break;
+                default:
                     break;
             }
         }
-    
-}
+
+        public void keyReleased(KeyEvent e) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_W:
+                    firstRound.setMoveUp(false);
+                    break;
+                case KeyEvent.VK_S:
+                    firstRound.setMoveDown(false);
+                    break;
+                case KeyEvent.VK_A:
+                    firstRound.setMoveLeft(false);
+                    break;
+                case KeyEvent.VK_D:
+                    firstRound.setMoveRight(false);
+                    break;
+                case KeyEvent.VK_SPACE:
+                    firstRound.setShooting(false);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
 class EarthlingPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
