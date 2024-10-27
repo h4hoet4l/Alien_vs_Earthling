@@ -4,6 +4,12 @@ import javax.swing.*;
 /**
  * Represents an Earthling character in the game with specific attributes 
  * such as position, appearance, speed, health, and attack capability.
+ *
+ * @Author: Aldair Pedro
+ * @ID: 1589296
+ *
+ * @Author: Gihak Kim
+ * @ID: 2083132
  */
 public class Earthling {
     Image appearance;
