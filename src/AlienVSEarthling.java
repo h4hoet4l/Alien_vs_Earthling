@@ -5,48 +5,50 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.*;
 
-public class AlienVSEarthling extends JFrame{
+public class AlienVSEarthling extends JFrame {
+    
+    // Game components
+    private final FirstRound firstRound = new FirstRound();
+    private BGM backgroundMusic;
 
-    ImageIcon homePage = new ImageIcon(new ImageIcon("src/images/home_page.png", 
-                    "Game main screen").getImage().getScaledInstance(Main.ScreenWidth, Main.ScreenHeight, Image.SCALE_SMOOTH));
-    ImageIcon gameBackground = new ImageIcon(new ImageIcon("src/images/game_page.png", 
-            "Spacey background").getImage().getScaledInstance(Main.ScreenWidth, Main.ScreenHeight, Image.SCALE_SMOOTH));
-    ImageIcon loadingScreen = new ImageIcon(new ImageIcon("src/images/loading_page.png",
-             "Game loading").getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
-    ImageIcon charSelection = new ImageIcon(new ImageIcon("src/images/character_page.png", 
-            "selection screen for earthling with 3 options").getImage().getScaledInstance(Main.ScreenWidth, 
-                            Main.ScreenHeight, Image.SCALE_SMOOTH));
-    ImageIcon currentScreen;
-    JLabel screenImage = new JLabel();
-    BGM music = new BGM("src/audio/MainPageBGM.wav", true);
-    Earthling earthling;
-    EarthlingPanel drawnEarthling;
-    boolean endGame;
-    Timer timer;
-    
-    
-    
-    
+    // Game states
+    private boolean isHomePage;
+    private boolean isLoadingPage;
+    private boolean isGamePage;
+    private boolean isCharacterPage;
+
+    // Images
+    private Image bufferImage;
+    private Graphics screenGraphic;
+    private final Image homePage = new ImageIcon("src/images/home_page.png").getImage();
+    private final Image loadingPage = new ImageIcon("src/images/loading_page.png").getImage();
+    private final Image gamePage = new ImageIcon("src/images/game_page.png").getImage();
+    private final Image characterPage = new ImageIcon("src/images/character_page.png").getImage();
+
+    // Constructor
     public AlienVSEarthling() {
-        
+        setTitle("Alien vs Earthling");
         setSize(Main.ScreenWidth, Main.ScreenHeight);
-        changeCurrentScreen(homePage, true);
-        setVisible(true);
-        setTitle("Aliens vs Earthlings");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        music.start();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setLayout(null);
+
+        init(); // Initialize the game
+    }
+
+    // Initialize method
+    private void init() {
+        isHomePage = true;
+        isLoadingPage = isCharacterPage = isGamePage = false;
+
+        backgroundMusic = new BGM("src/audio/MainPageBGM.wav", true);
+        backgroundMusic.start();
+
         addKeyListener(new KeyListener());
-        
-    
-        
-
-
     }
-    public void drawCurrentScreen(Graphics g) {
-        
 
-    }
     class Refresher implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             updateScreen();
