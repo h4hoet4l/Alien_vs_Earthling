@@ -1,7 +1,17 @@
 In your Terminal, copy and paste these 3 lines to play the game.
 
-cd "/Users/kgihak/Downloads/Alien_vs_Earthling-main"
+
+MAC:
+cd "/Users/YOURNAME/Downloads/Alien_vs_Earthling-main"
 
 javac src/Main.java
+
+java -cp src Main
+
+
+Windows/Linux:
+cd "C:\Users\YourUsername\Downloads\Alien_vs_Earthling-main"
+
+javac src\Main.java
 
 java -cp src Main
